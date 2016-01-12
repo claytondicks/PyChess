@@ -13,7 +13,7 @@ while True:
     surface.fill((0,0,0))
     
 
-    for index, cell in enumerate(theBoard.getBoard()):
+    for cell in theBoard.getBoard():
         e += 1
         if e % 9 == 0:
             e += 1
