@@ -1,3 +1,4 @@
+import pygame
 from pygame import Rect
 from cell import Cell
 
@@ -21,3 +22,13 @@ class Board(object):
     def getBoard(self):
         return self.board
     
+    
+    def draw(self, surface):
+        x = 0
+        for cell in self.board:
+            x += 1
+            if x % 9 == 0:
+                x += 1
+            cell.draw(surface, x)
+
+        pygame.display.flip()
