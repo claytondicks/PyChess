@@ -3,9 +3,12 @@ import pygame
 
 class Cell(object):
 
-    def __init__(self, rect):
+    size = 80
+
+    def __init__(self, rect, pos):
 
         self.rect = rect
+        self.pos = pos
         
         self.width = self.rect.width
         self.height = self.rect.height

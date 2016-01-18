@@ -1,17 +1,17 @@
 import pygame, sys
-from grid import Grid
+from gameManager import GameManager
 
 pygame.init()
 screenSize = (640, 640)
 surface = pygame.display.set_mode(screenSize)
 
+theGame = GameManager()
 
-theGrid = Grid()
 
 while True:
     surface.fill((0,0,0))
-    
-    theGrid.draw(surface)
+        
+    theGame.draw(surface)
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
