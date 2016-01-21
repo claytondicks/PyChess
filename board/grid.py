@@ -1,5 +1,5 @@
 from pygame import Rect
-from cell import Cell
+from board.cell import Cell
 from vec2 import Vector2
 
 class Grid(object):

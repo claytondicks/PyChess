@@ -5,7 +5,7 @@ Created on Jan 17, 2016
 '''
 
 import pygame
-from grid import Grid
+from board.grid import Grid
 from pieces.piecesManager import PiecesManager
 
 class GameManager(object):

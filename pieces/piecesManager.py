@@ -9,8 +9,10 @@ from vec2 import Vector2
 class PiecesManager(object):
 
     def __init__(self, grid):
-        self.grid = grid
         self.thePieces = []
+		
+		#testing things out
+		self.grid = grid
         self.kingPiece = Piece(Vector2(160,0), self.grid)
         self.thePieces.append(self.kingPiece)
      
