@@ -1,6 +1,7 @@
 import pygame, sys
 from gameManager import GameManager
 
+
 pygame.init()
 screenSize = (640, 640)
 surface = pygame.display.set_mode(screenSize)

@@ -8,10 +8,8 @@ import pygame
 
 class Player(object):
 
-    def __init__(self, colour, board):
-        self.colour = colour
-        self.board = board
-    
+    def __init__(self, colour):
+        self.colour = colour   
     
     
     def turn(self):
