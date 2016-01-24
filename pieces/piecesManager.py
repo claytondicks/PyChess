@@ -17,3 +17,8 @@ class PiecesManager(object):
     def draw(self, surface):
         for piece in self.thePieces:
             piece.draw(surface)
+            
+    def getPieceFrompoint(self, point):
+        for piece in self.thePieces:
+            if piece.isClicked(point):
+                return piece

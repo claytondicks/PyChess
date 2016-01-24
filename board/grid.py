@@ -8,12 +8,12 @@ class Grid(object):
         self.grid = []
         
         for row in range(8):
-            y = row * Cell.size
+            x = row * Cell.size
             for col in range(8):
-                x = col * Cell.size
+                y = col * Cell.size
                 
-                vec = Vector2(x,y)
-                rect = Rect(y, x, Cell.size, Cell.size)
+                vec = Vector2(x, y)
+                rect = Rect(x, y, Cell.size, Cell.size)
                 
                 self.grid.append(Cell(rect,vec)) 
                 
@@ -26,6 +26,7 @@ class Grid(object):
         for cell in self.grid:
             if cell.pos == pos:
                 return cell
+    
     
     def draw(self, surface):
         x = 0
