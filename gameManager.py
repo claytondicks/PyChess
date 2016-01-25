@@ -11,7 +11,6 @@ from pieces import *
 from board.grid import Grid
 from player import Player
 from vec2 import Vector2
-from random import choice
 
 
 WHT = 1
@@ -28,7 +27,7 @@ class GameManager(object):
         
         self.players[WHT] = Player(WHT, self.piecesManager)
         self.players[BLK] = Player(BLK, self.piecesManager)
-        self.turn = choice([WHT, BLK])
+        self.turn = WHT
         
         self.buildBoard()
     
