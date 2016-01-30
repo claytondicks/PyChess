@@ -1,4 +1,4 @@
-import pygame, sys
+import pygame
 from gameManager import GameManager
 
 
@@ -8,15 +8,10 @@ surface = pygame.display.set_mode(screenSize)
 
 theGame = GameManager()
 
-
+clock = pygame.time.Clock()
 
 while True:
-    surface.fill((0,0,0))
+    clock.tick(30)
     
     theGame.draw(surface)    
     theGame.doTurn()
-    
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-                pygame.quit()   #quit pygame
-                sys.exit()      #exit the game

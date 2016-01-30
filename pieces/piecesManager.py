@@ -22,3 +22,7 @@ class PiecesManager(object):
         for piece in self.thePieces:
             if piece.isClicked(point):
                 return piece
+    
+    def clearSelection(self):
+        for piece in self.thePieces:
+            piece.selected = None

@@ -27,6 +27,12 @@ class Grid(object):
             if cell.pos == pos:
                 return cell
     
+    def getCellFromPoint(self, point):
+        for cell in self.grid:
+            if cell.rect.collidepoint(point):
+                return cell
+            
+    
     
     def draw(self, surface):
         x = 0

@@ -67,7 +67,7 @@ class GameManager(object):
         self.whitePawn6 = Pawn(Vector2(400, 480), self.grid, self.players[WHT])
         self.whitePawn7 = Pawn(Vector2(480,480), self.grid, self.players[WHT])
         self.whitePawn8 = Pawn(Vector2(560, 480), self.grid, self.players[WHT])
-#         
+         
         self.piecesManager.thePieces.append(self.whiteKing)
         self.piecesManager.thePieces.append(self.whiteQueen)
         self.piecesManager.thePieces.append(self.whiteRook)

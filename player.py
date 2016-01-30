@@ -15,6 +15,7 @@ class Player(object):
     def turn(self):
         
         LEFT = 1
+        RIGHT = 3
         
         event = pygame.event.get()
         
@@ -26,10 +27,18 @@ class Player(object):
                 sys.exit()
             
             if e.type == pygame.MOUSEBUTTONDOWN and e.button == LEFT:
+                self.piecesManager.clearSelection()
                 for piece in self.piecesManager.thePieces:
                     if piece.isClicked(pos) and piece.isMine(self):
                         piece.selected = True
-                        return True
+
                         
-        
+            if e.type == pygame.MOUSEBUTTONDOWN and e.button == RIGHT:
+                for piece in self.piecesManager.thePieces:
+                    if piece.selected == True:
+                        piece.move(pos)
+                        piece.selected = None
+                        return True
+                            
+                
         return False

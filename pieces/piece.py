@@ -36,3 +36,7 @@ class Piece(object):
             return True
         
         return False
+    
+    def move(self, point):
+        cell = self.grid.getCellFromPoint(point)
+        self.pos = cell.pos
