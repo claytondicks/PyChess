@@ -6,14 +6,15 @@ class Grid(object):
     
     def __init__(self):
         self.grid = []
+        self.cellsize = 80
         
         for row in range(8):
-            x = row * Cell.size
+            x = row * self.cellsize
             for col in range(8):
-                y = col * Cell.size
+                y = col * self.cellsize
                 
                 vec = Vector2(x, y)
-                rect = Rect(x, y, Cell.size, Cell.size)
+                rect = Rect(x, y, self.cellsize, self.cellsize)
                 
                 self.grid.append(Cell(rect,vec)) 
                 

@@ -3,8 +3,6 @@ import pygame
 
 class Cell(object):
 
-    size = 80
-
     def __init__(self, rect, pos):
 
         self.rect = rect

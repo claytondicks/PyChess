@@ -16,9 +16,7 @@ class Vector2(object):
         rely = abs(self.y - other[1])
         return math.sqrt(relx**2 + rely**2)
 
-    def inRange(self, range):
-        return self.x * self.x + self.y * self.y <= range * range + 1
-        
+
     def __add__(self, other):
         newx = self.x + other[0]
         newy = self.y + other[1]
@@ -30,6 +28,7 @@ class Vector2(object):
         newy = self.y - other[1]
         return Vector2(newx, newy)
 
+    
     def __eq__(self, other):
         if self.x != other[0]:
             return False
@@ -51,14 +50,3 @@ class Vector2(object):
 
     def __str__(self):
             return str(self.x) + ' ' + str(self.y)
-
-    @staticmethod
-    def save(vec):
-        data = {}
-        data["x"] = vec[0]
-        data["y"] = vec[1]
-        return data
-            
-    @staticmethod
-    def load(data):
-        return Vector2(data["x"], data["y"])

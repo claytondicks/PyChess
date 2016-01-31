@@ -13,20 +13,17 @@ class Pawn(Piece):
     def __init__(self, pos, grid, player):
         Piece.__init__(self, pos, grid, player)
         
-
-        
-        
-        if self.player.colour == 1:
+        if self.player.colour == 0:
             self.img = pygame.image.load("images/wpawn.png").convert_alpha()
         else:
             self.img = pygame.image.load("images/bpawn.png").convert_alpha()
             
             
     def getValidMoves(self):
-        diff = Vector2(0, 80)
-        diff2 = Vector2(0, 160)
+        diff = Vector2(0, self.grid.cellsize)
+        diff2 = Vector2(0, self.grid.cellsize + self.grid.cellsize)
         
-        if self.player.colour == 1:
+        if self.player.colour == 0:
             theMove = self.pos - diff
         else:
             theMove = self.pos + diff
@@ -34,7 +31,7 @@ class Pawn(Piece):
         self.validMoves.append(theMove)
         
         if self.firstMove:
-            if self.player.colour == 1:
+            if self.player.colour == 0:
                 theMove2 = self.pos - diff2
             else:
                 theMove2 = self.pos + diff2

@@ -10,7 +10,6 @@ class Piece(object):
     
     
     def __init__(self, pos, grid, player):
-        #self.king = pygame.image.load("images/wking.png").convert_alpha()
         self.pos = pos
         self.grid = grid
         self.player = player
