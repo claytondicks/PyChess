@@ -1,45 +1,64 @@
 import math
 
+
 class Vector2(object):
 
     def __init__(self, x, y=None):
-        self.coords = (x, y)
-        if(y is None):
-            self.x = float(x[0])
-            self.y = float(x[1])
-        else:
-            self.x = float(x)
-            self.y = float(y)
+            if(y is None):
+                self.x = x[0]
+                self.y = x[1]
+            else:
+                self.x = x
+                self.y = y
 
     def dist(self, other):
-        x = self.coords[0]
-        y = self.coords[1]
-        x = abs(x - other[0]);
-        y = abs(y - other[1]);
-        return x if x > y else y;
-    
-    def __getitem__(self, key):
-        return self.coords[key]
-    
+        relx = abs(self.x - other[0])
+        rely = abs(self.y - other[1])
+        return math.sqrt(relx**2 + rely**2)
+
+    def inRange(self, range):
+        return self.x * self.x + self.y * self.y <= range * range + 1
+        
     def __add__(self, other):
-        self.x += other[0]
-        self.y += other[1]
-        return self
+        newx = self.x + other[0]
+        newy = self.y + other[1]
+        return Vector2(newx, newy)
+
         
     def __sub__(self, other):
-        self.x -= other.x
-        self.y -= other.y
-        return self
-    
-    def __eq__(self, other):
-        if self[0] != other[0]:
-            return False
-    
-        if self[1] != other[1]:
-            return False
-    
-        return True
-    
-    def __str__(self):
-        return str(self.coords[0]) + ' ' + str(self.coords[1])
+        newx = self.x - other[0]
+        newy = self.y - other[1]
+        return Vector2(newx, newy)
 
+    def __eq__(self, other):
+        if self.x != other[0]:
+            return False
+
+        if self.y != other[1]:
+            return False
+
+        return True
+
+    def center(self):
+        self.x = math.floor(self.x) + 0.5
+        self.y = math.floor(self.y) + 0.5
+        
+    def save(self):
+        return Vector2.save(self)
+
+    def __getitem__(self, key):
+        return (self.x, self.y)[key]
+
+    def __str__(self):
+            return str(self.x) + ' ' + str(self.y)
+
+    @staticmethod
+    def save(vec):
+        data = {}
+        data["x"] = vec[0]
+        data["y"] = vec[1]
+        return data
+            
+    @staticmethod
+    def load(data):
+        return Vector2(data["x"], data["y"])

@@ -5,8 +5,6 @@ Created on Jan 23, 2016
 '''
 import pygame
 
-from vec2 import Vector2
-
 
 from piece import Piece
 
