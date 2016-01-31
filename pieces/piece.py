@@ -16,12 +16,18 @@ class Piece(object):
         self.player = player
         self.img = None
         self.selected = None
+        self.validMoves = []
+        self.firstMove = True
 
     def draw(self, surface):
         cell = self.grid.getCellFromPos(self.pos) 
         if self.selected:
 
             pygame.draw.rect(surface, (0,255,0), cell.rect, 2)
+            
+            for position in self.getValidMoves():
+                drawFuturemove = self.grid.getCellFromPos(position)
+                pygame.draw.rect(surface, (0,0,255), drawFuturemove.rect, 2)
           
 
         surface.blit(self.img, (cell.rect.left, cell.rect.top))
@@ -37,6 +43,19 @@ class Piece(object):
         
         return False
     
-    def move(self, point):
-        cell = self.grid.getCellFromPoint(point)
+    def move(self, point):        
+        cell = self.grid.getCellFromPoint(point)        
         self.pos = cell.pos
+               
+       
+    def isValidMove(self, point):
+        cell = self.grid.getCellFromPoint(point)
+        
+        for moves in self.validMoves:
+            if moves == cell.pos:
+                return True
+            
+        return False
+        
+    def getValidMoves(self):
+        pass

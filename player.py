@@ -20,7 +20,7 @@ class Player(object):
         event = pygame.event.get()
         
         for e in event:
-            pos = pygame.mouse.get_pos()
+            point = pygame.mouse.get_pos()
             
             if e.type == pygame.QUIT:
                 pygame.quit()
@@ -29,14 +29,14 @@ class Player(object):
             if e.type == pygame.MOUSEBUTTONDOWN and e.button == LEFT:
                 self.piecesManager.clearSelection()
                 for piece in self.piecesManager.thePieces:
-                    if piece.isClicked(pos) and piece.isMine(self):
+                    if piece.isClicked(point) and piece.isMine(self):
                         piece.selected = True
 
                         
             if e.type == pygame.MOUSEBUTTONDOWN and e.button == RIGHT:
                 for piece in self.piecesManager.thePieces:
-                    if piece.selected == True:
-                        piece.move(pos)
+                    if piece.selected == True and piece.isValidMove(point):
+                        piece.move(point)
                         piece.selected = None
                         return True
                             

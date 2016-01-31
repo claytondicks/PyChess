@@ -5,6 +5,8 @@ Created on Jan 23, 2016
 '''
 import pygame
 
+from vec2 import Vector2
+
 
 from piece import Piece
 
@@ -17,4 +19,12 @@ class Rook(Piece):
         else:
             self.img = pygame.image.load("images/brook.png").convert_alpha()
         
-    
+    def getValidMoves(self):
+        for cell in self.grid.grid:
+            if cell.pos.x - self.pos.x == 0:
+                self.validMoves.append(cell.pos)
+                
+            if cell.pos.y - self.pos.y == 0:
+                self.validMoves.append(cell.pos)
+            
+        return self.validMoves
