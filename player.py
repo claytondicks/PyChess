@@ -28,9 +28,8 @@ class Player(object):
             
             if e.type == pygame.MOUSEBUTTONDOWN and e.button == LEFT:
                 self.piecesManager.clearSelection()
-                for piece in self.piecesManager.thePieces:
-                    if piece.isClicked(point) and piece.isMine(self):
-                        piece.selected = True
+                piece = self.piecesManager.getPieceFrompoint(point)
+                piece.selected = True
 
                         
             if e.type == pygame.MOUSEBUTTONDOWN and e.button == RIGHT:

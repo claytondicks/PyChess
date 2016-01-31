@@ -19,6 +19,10 @@ class Pawn(Piece):
             self.img = pygame.image.load("images/bpawn.png").convert_alpha()
             
             
+        self.rect = self.img.get_rect()
+        self.rect.x, self.rect.y = self.pos.x, self.pos.y
+    
+    
     def getValidMoves(self):
         diff = Vector2(0, self.grid.cellsize)
         diff2 = Vector2(0, self.grid.cellsize + self.grid.cellsize)

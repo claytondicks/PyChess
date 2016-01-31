@@ -17,19 +17,21 @@ class Piece(object):
         self.selected = None
         self.validMoves = []
         self.firstMove = True
+        self.rect = None
+
 
     def draw(self, surface):
-        cell = self.grid.getCellFromPos(self.pos) 
+        #cell = self.grid.getCellFromPos(self.pos) 
         if self.selected:
 
-            pygame.draw.rect(surface, (0,255,0), cell.rect, 2)
+            pygame.draw.rect(surface, (0,255,0), self.rect, 2)
             
             for position in self.getValidMoves():
                 drawFuturemove = self.grid.getCellFromPos(position)
                 pygame.draw.rect(surface, (0,0,255), drawFuturemove.rect, 2)
           
 
-        surface.blit(self.img, (cell.rect.left, cell.rect.top))
+        surface.blit(self.img, (self.pos.x, self.pos.y))
             
         
     def isClicked(self, point):

@@ -16,5 +16,10 @@ class Knight(Piece):
             self.img = pygame.image.load("images/wknight.png").convert_alpha()
         else:
             self.img = pygame.image.load("images/bknight.png").convert_alpha()
+            
+            
+            
+        self.rect = self.img.get_rect()
+        self.rect.x, self.rect.y = self.pos.x, self.pos.y
         
     
