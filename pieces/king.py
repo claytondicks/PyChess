@@ -17,6 +17,4 @@ class King(Piece):
         else:
             self.img = pygame.image.load("images/bking.png").convert_alpha()
         
-        self.rect = self.img.get_rect()
-        self.rect.x, self.rect.y = self.pos.x, self.pos.y
     

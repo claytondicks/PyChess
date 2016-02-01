@@ -17,10 +17,6 @@ class Rook(Piece):
             self.img = pygame.image.load("images/wrook.png").convert_alpha()
         else:
             self.img = pygame.image.load("images/brook.png").convert_alpha()
-            
-            
-        self.rect = self.img.get_rect()
-        self.rect.x, self.rect.y = self.pos.x, self.pos.y
         
     def getValidMoves(self):
         for cell in self.grid.grid:
