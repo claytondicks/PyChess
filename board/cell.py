@@ -8,15 +8,17 @@ class Cell(object):
         self.rect = rect
         self.pos = pos
         
-        self.width = self.rect.width
-        self.height = self.rect.height
+#         self.width = self.rect.width
+#         self.height = self.rect.height
 
-        self.cellSurface = pygame.Surface((self.width , self.height))
     
     def draw(self, surface, state):
         
         if state % 2 == 0:
-            self.cellSurface.fill((255,255,255))
+            pygame.draw.rect(surface, (255,255,255), self.rect, 0)
         else:
-            self.cellSurface.fill((128,128,128))
-        surface.blit(self.cellSurface, (self.rect.left, self.rect.top))
+            pygame.draw.rect(surface, (128, 128, 128), self.rect, 0)
+        
+        
+    def highlight(self, surface):
+        pygame.draw.rect(surface, (0,0,255), self.rect, 2)

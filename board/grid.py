@@ -1,5 +1,5 @@
 from pygame import Rect
-from board.cell import Cell
+from cell import Cell
 from vec2 import Vector2
 
 class Grid(object):
@@ -19,22 +19,6 @@ class Grid(object):
                 self.grid.append(Cell(rect,vec)) 
                 
     
-    
-    def getGrid(self):
-        return self.grid
-    
-    def getCellFromPos(self, pos):
-        for cell in self.grid:
-            if cell.pos == pos:
-                return cell
-    
-    def getCellFromPoint(self, point):
-        for cell in self.grid:
-            if cell.rect.collidepoint(point):
-                return cell
-            
-    
-    
     def draw(self, surface):
         x = 0
         for cell in self.grid:
@@ -42,3 +26,7 @@ class Grid(object):
             if x % 9 == 0:
                 x += 1
             cell.draw(surface, x)
+            
+            
+    def __iter__(self):
+        return iter(self.grid)  

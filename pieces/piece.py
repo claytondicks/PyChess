@@ -9,9 +9,9 @@ import pygame
 class Piece(object):
     
     
-    def __init__(self, pos, grid, player):
+    def __init__(self, pos, board, player):
         self.pos = pos
-        self.grid = grid
+        self.board = board
         self.player = player
         self.img = None
         self.selected = None
@@ -19,21 +19,21 @@ class Piece(object):
         self.firstMove = True
 
     def draw(self, surface):
-        cell = self.grid.getCellFromPos(self.pos) 
+        cell = self.board.getCellFromPos(self.pos) 
+        
         if self.selected:
-
             pygame.draw.rect(surface, (0,255,0), cell.rect, 2)
             
-            for position in self.getValidMoves():
-                drawFuturemove = self.grid.getCellFromPos(position)
-                pygame.draw.rect(surface, (0,0,255), drawFuturemove.rect, 2)
+#             for position in self.getValidMoves():
+#                 drawFuturemove = self.grid.getCellFromPos(position)
+#                 pygame.draw.rect(surface, (0,0,255), drawFuturemove.rect, 2)
           
 
         surface.blit(self.img, (cell.rect.left, cell.rect.top))
             
         
     def isClicked(self, point):
-        cell = self.grid.getCellFromPos(self.pos)
+        cell = self.board.getCellFromPos(self.pos)
         return cell.rect.collidepoint(point)
     
     def isMine(self, player):
@@ -43,12 +43,12 @@ class Piece(object):
         return False
     
     def move(self, point):        
-        cell = self.grid.getCellFromPoint(point)        
+        cell = self.board.getCellFromPoint(point)        
         self.pos = cell.pos
                
        
     def isValidMove(self, point):
-        cell = self.grid.getCellFromPoint(point)
+        cell = self.board.getCellFromPoint(point)
         
         for moves in self.validMoves:
             if moves == cell.pos:

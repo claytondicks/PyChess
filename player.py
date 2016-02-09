@@ -8,9 +8,9 @@ import pygame, sys
 
 class Player(object):
 
-    def __init__(self, colour, piecesManager):
+    def __init__(self, colour, board):
         self.colour = colour   
-        self.piecesManager = piecesManager
+        self.board = board
     
     def turn(self):
         
@@ -27,13 +27,13 @@ class Player(object):
                 sys.exit()
             
             if e.type == pygame.MOUSEBUTTONDOWN and e.button == LEFT:
-                self.piecesManager.clearSelection()
-                piece = self.piecesManager.getPieceFrompoint(point)
+                self.board.clearSelection()
+                piece = self.board.getPieceFrompoint(point)
                 piece.selected = True
 
                         
             if e.type == pygame.MOUSEBUTTONDOWN and e.button == RIGHT:
-                for piece in self.piecesManager.thePieces:
+                for piece in self.board.pieces:
                     if piece.selected == True and piece.isValidMove(point):
                         piece.move(point)
                         piece.selected = None

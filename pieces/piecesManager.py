@@ -18,11 +18,5 @@ class PiecesManager(object):
         for piece in self.thePieces:
             piece.draw(surface)
             
-    def getPieceFrompoint(self, point):
-        for piece in self.thePieces:
-            if piece.isClicked(point):
-                return piece
-    
-    def clearSelection(self):
-        for piece in self.thePieces:
-            piece.selected = None
+    def __iter__(self):
+        return iter(self.thePieces)
