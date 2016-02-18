@@ -1,6 +1,6 @@
 from pygame import Rect
 from cell import Cell
-from vec2 import Vector2
+from util.vec2 import Vector2
 
 class Grid(object):
     

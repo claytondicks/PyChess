@@ -6,11 +6,17 @@ class Board(object):
     def __init__(self):
         self.grid = Grid()
         self.pieces = PiecesManager()
+
         
         
     def draw(self, surface):
         self.grid.draw(surface)
         self.pieces.draw(surface)
+        
+        for piece in self.pieces:
+            if piece.selected:
+                for cell in piece.getValidMoves():
+                    cell.highlight(surface)
 
 
     def getCellFromPos(self, pos):

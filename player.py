@@ -30,6 +30,7 @@ class Player(object):
                 self.board.clearSelection()
                 piece = self.board.getPieceFrompoint(point)
                 piece.selected = True
+                                             
 
                         
             if e.type == pygame.MOUSEBUTTONDOWN and e.button == RIGHT:

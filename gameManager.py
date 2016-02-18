@@ -9,7 +9,7 @@ import pygame
 from board.gameBoard import Board
 
 from player import Player
-from vec2 import Vector2
+from util.vec2 import Vector2
 from pieces import *
 
 
@@ -18,9 +18,10 @@ BLK = 1
 
 class GameManager(object):
     
-    def __init__(self):
+    def __init__(self, surface):
         pygame.display.set_caption('Pygame Chess')
 
+        self.surface = surface
         self.board = Board()
         self.players = {}
         
@@ -30,8 +31,8 @@ class GameManager(object):
         
         self.buildBoard()
     
-    def draw(self, surface):
-        self.board.draw(surface)
+    def draw(self):
+        self.board.draw(self.surface)
         
         pygame.display.flip()
         
@@ -57,7 +58,7 @@ class GameManager(object):
 #         self.whiteBishop2 = Bishop(Vector2(400, 560), self.board, self.players[WHT])
 #         self.whiteKnight = Knight(Vector2(80, 560), self.board, self.players[WHT])
 #         self.whiteKnight2 = Knight(Vector2(480, 560), self.board, self.players[WHT])
-        self.whitePawn = Pawn(Vector2(0, 480), self.board, self.players[WHT])
+        self.whitePawn = Pawn(Vector2(0, 400), self.board, self.players[WHT])
 #         self.whitePawn2 = Pawn(Vector2(80, 480), self.board, self.players[WHT])
 #         self.whitePawn3 = Pawn(Vector2(160, 480), self.board, self.players[WHT])
 #         self.whitePawn4 = Pawn(Vector2(240, 480), self.board, self.players[WHT])
