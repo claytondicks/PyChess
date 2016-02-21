@@ -22,8 +22,8 @@ class Piece(object):
     def draw(self, surface):
         cell = self.board.getCellFromPos(self.pos) 
         
-        if self.selected:
-            pygame.draw.rect(surface, (0,255,0), cell.rect, 2)
+#         if self.selected:
+#             pygame.draw.rect(surface, (0,255,0), cell.rect, 5)
         
 
         surface.blit(self.img, (cell.rect.left, cell.rect.top))
@@ -54,7 +54,28 @@ class Piece(object):
         return False
         
     def getValidMoves(self):
-        pass
+        for name, direction in self.directions.iteritems():
+            self.getMoves(self.pos + direction, direction)
+            
+        return self.validMoves           
+
     
-    def getMoves(self):
-        pass
+    def getMoves(self, pos, direction):        
+        cell = self.board.getCellFromPos(pos) 
+        
+        if not cell:
+            return
+               
+        
+        for piece in self.board.pieces:
+            if piece.pos == cell.pos:
+                if self.isMine(self.player) and piece != self:
+                    return 
+                if piece.player != self.player:
+                    return self.validMoves.append(cell)
+                
+                
+        
+        pos += direction
+        self.validMoves.append(cell)
+        return self.getMoves(pos,direction)

@@ -14,9 +14,11 @@ class Board(object):
         self.pieces.draw(surface)
         
         for piece in self.pieces:
-            if piece.selected:
+            if piece.selected:                
                 for cell in piece.getValidMoves():
-                    cell.highlight(surface)
+                    cell.highlight(surface, (0,0,255), 2)
+                    
+                self.getCellFromPos(piece.pos).highlight(surface, (0,255,0), 2)
 
 
     def getCellFromPos(self, pos):
@@ -24,7 +26,11 @@ class Board(object):
             if cell.pos == pos:
                 return cell
             
-            
+    def getPieceFromPos(self, pos):
+        for piece in self.pieces:
+            if piece.pos == pos:
+                return piece
+                    
     def getCellFromPoint(self, point):
         for cell in self.grid:
             if cell.rect.collidepoint(point):   

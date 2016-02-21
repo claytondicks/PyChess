@@ -7,11 +7,15 @@ import pygame
 
 
 from piece import Piece
+from util.directions import Directions
 
 class Queen(Piece):
     
     def __init__(self, pos, grid, player):
         Piece.__init__(self, pos, grid, player)
+        
+        self.directions = dict(Directions.diagonals.items() + Directions.straight.items())
+        
         if self.player.colour == 0:
             self.img = pygame.image.load("images/wqueen.png").convert_alpha()
         else:

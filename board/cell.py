@@ -20,5 +20,5 @@ class Cell(object):
             pygame.draw.rect(surface, (128, 128, 128), self.rect, 0)
         
         
-    def highlight(self, surface):
-        pygame.draw.rect(surface, (0,0,255), self.rect, 2)
+    def highlight(self, surface, colour, pad):
+        pygame.draw.rect(surface, colour, self.rect, pad)

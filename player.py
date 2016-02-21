@@ -29,8 +29,11 @@ class Player(object):
             if e.type == pygame.MOUSEBUTTONDOWN and e.button == LEFT:
                 self.board.clearSelection()
                 piece = self.board.getPieceFrompoint(point)
-                piece.selected = True
-                                             
+                if piece is None:
+                    return             
+                
+                if piece.isMine(self):
+                    piece.selected = True                                             
 
                         
             if e.type == pygame.MOUSEBUTTONDOWN and e.button == RIGHT:
@@ -38,6 +41,7 @@ class Player(object):
                     if piece.selected == True and piece.isValidMove(point):
                         piece.move(point)
                         piece.selected = None
+                        piece.validMoves = []
                         return True
                             
                 
