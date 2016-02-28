@@ -33,14 +33,20 @@ class Piece(object):
         cell = self.board.getCellFromPos(self.pos)
         return cell.rect.collidepoint(point)
     
-    def isMine(self, player):
+    def belongsTo(self, player):
         if player == self.player:
             return True
         
         return False
     
     def move(self, point):        
-        cell = self.board.getCellFromPoint(point)        
+        cell = self.board.getCellFromPoint(point)
+        piece = self.board.getPieceFromPos(cell.pos)
+        
+        if piece != None:
+            if piece.player != self.player:
+                self.board.pieces.captured(piece)
+                
         self.pos = cell.pos
                
        
@@ -62,17 +68,15 @@ class Piece(object):
     
     def getMoves(self, pos, direction):        
         cell = self.board.getCellFromPos(pos) 
-        
+        piece = self.board.getPieceFromPos(pos)
         if not cell:
             return
                
-        
-        for piece in self.board.pieces:
-            if piece.pos == cell.pos:
-                if self.isMine(self.player) and piece != self:
-                    return 
-                if piece.player != self.player:
-                    return self.validMoves.append(cell)
+        if piece != None:
+            if self.belongsTo(piece.player):
+                return 
+            else:
+                return self.validMoves.append(cell)
                 
                 
         

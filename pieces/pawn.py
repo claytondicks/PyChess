@@ -45,7 +45,7 @@ class Pawn(Piece):
         for move in self.validMoves:
             piece = self.board.getPieceFromPos(move.pos)
             if piece:
-                if self.isMine(self.player) and piece != self:
+                if self.belongsTo(self.player) and piece != self:
                         self.validMoves.remove(move)    
                         
                           

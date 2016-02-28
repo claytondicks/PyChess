@@ -32,7 +32,7 @@ class Player(object):
                 if piece is None:
                     return             
                 
-                if piece.isMine(self):
+                if piece.belongsTo(self):
                     piece.selected = True                                             
 
                         

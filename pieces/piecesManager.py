@@ -8,10 +8,15 @@ class PiecesManager(object):
 
     def __init__(self):
         self.thePieces = []
+        self.capturedPieces = []
         
     
     def add(self, piece):
         self.thePieces.append(piece) 
+    
+    def captured(self, piece):
+        self.thePieces.remove(piece)
+        self.capturedPieces.append(piece)
     
     
     def draw(self, surface):
