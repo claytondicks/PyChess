@@ -12,7 +12,7 @@ class Board(object):
 		self.pieces.draw(surface)
 		
 		for piece in self.pieces:
-			if piece.selected:
+			if piece.isSelected():
 				for cell in piece.getValidMoves():
 					cell.highlight(surface, (0,0,255), 2)
 					
@@ -38,7 +38,3 @@ class Board(object):
 		for piece in self.pieces:
 			if piece.isClicked(point):
 				return piece
-	
-	def clearSelection(self):
-		for piece in self.pieces:
-			piece.selected = None

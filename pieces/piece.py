@@ -14,7 +14,6 @@ class Piece(object):
 		self.board = board
 		self.player = player
 		self.img = None
-		self.selected = None
 		self.firstMove = True
 		self.directions = []
 		self.validMoves = []
@@ -23,7 +22,9 @@ class Piece(object):
 		cell = self.board.getCellFromPos(self.pos) 
 		surface.blit(self.img, (cell.rect.left, cell.rect.top))
 			
-		
+	def isSelected(self):
+		return self.player.selected is self
+
 	def isClicked(self, point):
 		cell = self.board.getCellFromPos(self.pos)
 		return cell.rect.collidepoint(point)
