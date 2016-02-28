@@ -15,17 +15,12 @@ class Piece(object):
 		self.player = player
 		self.img = None
 		self.selected = None
-		self.validMoves = []
 		self.firstMove = True
 		self.directions = []
+		self.validMoves = []
 
 	def draw(self, surface):
 		cell = self.board.getCellFromPos(self.pos) 
-		
-#		 if self.selected:
-#			 pygame.draw.rect(surface, (0,255,0), cell.rect, 5)
-		
-
 		surface.blit(self.img, (cell.rect.left, cell.rect.top))
 			
 		
@@ -53,30 +48,36 @@ class Piece(object):
 	def isValidMove(self, point):
 		cell = self.board.getCellFromPoint(point)
 		
-		for moves in self.validMoves:
-			if moves.pos == cell.pos:
+		for move in self.getValidMoves():
+			if move.pos == cell.pos:
 				return True
 			
 		return False
 		
-	def getValidMoves(self):		
-		self.validMoves = self.getMoves(self.pos, self.directions.values())
-		return self.validMoves
+	def getValidMoves(self):
+		return self.getMoves(self.board, self.player, self.pos, self.pos, self.directions.values())
 	
-	def getMoves(self, pos, directions, moves=[]):
+	@staticmethod
+	def getMoves(board, player, origin, pos, directions=[], moves=None):
+		if moves is None:
+			moves = []
+		
 		if len(directions) == 0:
 			return moves
 	
-		cell = self.board.getCellFromPos(pos) 
-		piece = self.board.getPieceFromPos(pos)
-		if not cell: # Off the board
-			return self.getMoves(self.pos, directions[1:], moves)
+		cell = board.getCellFromPos(pos) 
+		piece = board.getPieceFromPos(pos)
+		if cell is None: # Off the board
+			return Piece.getMoves(board, player, origin, origin, directions[1:], moves)
 
-		if piece is not None and piece is not self:
-			if not piece.belongsTo(self.player):
+		if piece is not None and piece.pos is not origin:
+			if not piece.belongsTo(player):
 				moves.append(cell)
-			return self.getMoves(self.pos, directions[1:], moves)
+			return Piece.getMoves(board, player, origin, origin, directions[1:], moves)
 		
 		moves.append(cell)
 		pos += directions[0]
-		return self.getMoves(pos, directions, moves)
+		return Piece.getMoves(board, player, origin, pos, directions, moves)
+		
+	def __str__(self):
+		return str(self.pos)
