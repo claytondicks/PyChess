@@ -1,5 +1,6 @@
 from grid import Grid
 from pieces.piecesManager import PiecesManager
+from util.color import Color
 
 class Board(object):
 	
@@ -14,7 +15,7 @@ class Board(object):
 		for piece in self.pieces:
 			if piece.isSelected():
 				for cell in piece.getValidMoves():
-					cell.highlight(surface, (0,0,255), 2)
+					cell.highlight(surface, Color.rainbow(), 2)
 					
 				self.getCellFromPos(piece.pos).highlight(surface, (0,255,0), 2)
 
