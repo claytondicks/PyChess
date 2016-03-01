@@ -11,8 +11,8 @@ from util.directions import Directions
 
 class Knight(Piece):
 	
-	def __init__(self, pos, grid, player):
-		Piece.__init__(self, pos, grid, player)
+	def __init__(self, pos, board, player):
+		Piece.__init__(self, pos, board, player)
 		
 		self.directions = Directions.knight
 		

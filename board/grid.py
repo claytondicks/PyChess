@@ -6,7 +6,7 @@ class Grid(object):
     
     def __init__(self):
         self.grid = []
-        self.cellsize = 80
+        self.cellsize = 50
         
         for row in range(8):
             x = row * self.cellsize

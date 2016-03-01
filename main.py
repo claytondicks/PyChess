@@ -3,7 +3,7 @@ from gameManager import GameManager
 
 
 pygame.init()
-screenSize = (640, 640)
+screenSize = (400, 400)
 surface = pygame.display.set_mode(screenSize)
 
 theGame = GameManager(surface)
