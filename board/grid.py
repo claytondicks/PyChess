@@ -13,7 +13,7 @@ class Grid(object):
             for col in range(8):
                 y = col * self.cellsize
                 
-                vec = Vector2(x, y)
+                vec = Vector2(row, col)
                 rect = Rect(x, y, self.cellsize, self.cellsize)
                 
                 self.grid.append(Cell(rect,vec)) 

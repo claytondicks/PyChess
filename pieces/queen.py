@@ -20,4 +20,6 @@ class Queen(Piece):
 		else:
 			self.img = pygame.image.load("images/bqueen.png").convert_alpha()
 		
+		
+		self.img = pygame.transform.scale(self.img, (self.board.grid.cellsize, self.board.grid.cellsize))
 	

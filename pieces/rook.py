@@ -21,3 +21,5 @@ class Rook(Piece):
 			self.img = pygame.image.load("images/wrook.png").convert_alpha()
 		else:
 			self.img = pygame.image.load("images/brook.png").convert_alpha()
+			
+		self.img = pygame.transform.scale(self.img, (self.board.grid.cellsize, self.board.grid.cellsize))

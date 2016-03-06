@@ -20,6 +20,8 @@ class Knight(Piece):
 			self.img = pygame.image.load("images/wknight.png").convert_alpha()
 		else:
 			self.img = pygame.image.load("images/bknight.png").convert_alpha()
+			
+		self.img = pygame.transform.scale(self.img, (self.board.grid.cellsize, self.board.grid.cellsize))
 		
 	def getValidMoves(self):
 		for name, direction in self.directions.iteritems():

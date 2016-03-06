@@ -18,6 +18,8 @@ class Pawn(Piece):
 		else:
 			self.img = pygame.image.load("images/bpawn.png").convert_alpha()
 			
+		self.img = pygame.transform.scale(self.img, (self.board.grid.cellsize, self.board.grid.cellsize))
+			
 			
 	def getValidMoves(self):
 		if self.player.colour == 0:
@@ -30,7 +32,7 @@ class Pawn(Piece):
 		
 		if not cell:
 			return
-			   
+
 		self.validMoves.append(cell)
 		
 		if self.firstMove:
@@ -48,6 +50,5 @@ class Pawn(Piece):
 				if self.belongsTo(self.player) and piece != self:
 						self.validMoves.remove(move)	
 						
-						  
-		
+
 		return self.validMoves

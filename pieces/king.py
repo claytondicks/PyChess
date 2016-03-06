@@ -18,11 +18,10 @@ class King(Piece):
 		
 		if self.player.colour == 0:
 			self.img = pygame.image.load("images/wking.png").convert_alpha()
-			self.img = pygame.transform.scale(self.img, (self.board.grid.cellsize, self.board.grid.cellsize))
 		else:
 			self.img = pygame.image.load("images/bking.png").convert_alpha()
-			self.img = pygame.transform.scale(self.img, (self.board.grid.cellsize, self.board.grid.cellsize))
-		
+			
+		self.img = pygame.transform.scale(self.img, (self.board.grid.cellsize, self.board.grid.cellsize))
 
 	def getValidMoves(self):
 		for name, direction in self.directions.iteritems():
@@ -31,7 +30,7 @@ class King(Piece):
 		
 			if not cell:
 				continue
-				   
+
 			piece = self.board.getPieceFromPos(cell.pos)
 			if not piece:
 				self.validMoves.append(cell)

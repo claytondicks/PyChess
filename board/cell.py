@@ -15,9 +15,9 @@ class Cell(object):
     def draw(self, surface, state):
         
         if state % 2 == 0:
-            pygame.draw.rect(surface, (255,255,255), self.rect, 0)
-        else:
             pygame.draw.rect(surface, (128, 128, 128), self.rect, 0)
+        else:
+            pygame.draw.rect(surface, (255,255,255), self.rect, 0)
         
         
     def highlight(self, surface, colour, pad):

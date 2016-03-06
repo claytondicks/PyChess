@@ -20,3 +20,5 @@ class Bishop(Piece):
 			self.img = pygame.image.load("images/wbishop.png").convert_alpha()
 		else:
 			self.img = pygame.image.load("images/bbishop.png").convert_alpha()
+		
+		self.img = pygame.transform.scale(self.img, (self.board.grid.cellsize, self.board.grid.cellsize))

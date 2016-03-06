@@ -44,8 +44,7 @@ class Piece(object):
 				self.board.pieces.captured(piece)
 				
 		self.pos = cell.pos
-			   
-	   
+
 	def isValidMove(self, point):
 		cell = self.board.getCellFromPoint(point)
 		
